@@ -8,23 +8,14 @@ module.exports = {
   ],
   theme: {
     extend: {
-      dark: {
-        'bg': '#1a1a1a',
-        'text': '#fff',
-        'primary': '#fff',
-        'secondary': '#fff',
-        'accent': '#fff',
-        'muted': '#fff',
-        'highlight': '#fff',
+      colors: {
+        'primary': '#2E3B3E',
+        'secondary': '#50666B',
+        'highlight': '#F9F9F9',
+        'accent': '#FD6378',
       },
-      light: {
-        'bg': '#fff',
-        'text': '#000',
-        'primary': '#000',
-        'secondary': '#000',
-        'accent': '#000',
-        'muted': '#000',
-        'highlight': '#000',
+      fontFamily: {
+        'sans': ['Inter', 'sans-serif'],
       },
     },
   },

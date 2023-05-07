@@ -1,36 +1,51 @@
 import { useTheme } from "next-themes";
-import Image from "next/image";
+import { useEffect, useState } from "react";
+import { FiSun, FiMoon } from "react-icons/fi";
 
 export default function Header() {
-  const { theme, setTheme } = useTheme();
-  let modeSrc = theme === "dark" ? "/sun.svg" : "/moon.svg";
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme, systemTheme } = useTheme();
 
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+
+  let currentTheme = theme === "system" ? systemTheme : theme;
   return (
-    <header className="grid grid-cols-3 md:grid-cols-6 grid-rows-2 md:grid-rows-1 sticky top-0 z-50">
-      <div className="col-span-2 md:col-span-1 row-span-1 flex items-center justify-center border-r border-b border-black dark:border-white p-2 md:p-4">
-        <p className="text-lg">Cody Lambert</p>
+    <header className="grid grid-cols-3 md:grid-cols-6 grid-rows-2 md:grid-rows-1 sticky top-0 z-50 bg-highlight dark:bg-primary">
+      <div className="col-span-2 md:col-span-2 lg:col-span-1 row-span-1 flex items-center justify-center border-r-2 border-b-2 border-black dark:border-white p-2 md:p-4 hover:bg-primary dark:hover:bg-highlight hover:text-highlight dark:hover:text-primary">
+        <p className="text-lg md:text-xl">Cody Lambert</p>
       </div>
-      <div className="hidden md:block col-span-4 row-span-1 flex items-center justify-center border-b border-r border-black dark:border-white p-2 md:p-4">
+      <div className="hidden md:block col-span-3 lg:col-span-4 row-span-1 flex items-center justify-center border-b-2 border-r-2 border-black dark:border-white p-2 md:p-4">
         <div className="flex flex-row justify-center">
-          <p className="text-lg mx-6 hover:underline">About</p>
-          <p className="text-lg mx-6 hover:underline">Blog</p>
-          <p className="text-lg mx-6 hover:underline">Contact</p>
+          <p className="text-lg md:text-xl mx-6 hover:underline hover:cursor-pointer">
+            About
+          </p>
+          <p className="text-lg md:text-xl mx-6 hover:underline hover:cursor-pointer">
+            Blog
+          </p>
+          <p className="text-lg md:text-xl mx-6 hover:underline hover:cursor-pointer">
+            Contact
+          </p>
         </div>
       </div>
       <div
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        className="col-span-1 row-span-1 flex items-center justify-center border-b border-black dark:border-white p-2 md:p-4 hover:cursor-pointer"
+        className="col-span-1 row-span-1 flex items-center justify-center border-b-2 border-black dark:border-white p-2 md:p-4 hover:cursor-pointer"
       >
-        <Image src={modeSrc} width={32} height={32} alt={"mode"} />
+        {theme === "dark" ? (
+          <FiSun className="text-2xl text-highlight" />
+        ) : (
+          <FiMoon className="text-2xl text-secondary" />
+        )}
       </div>
-      <div className="md:hidden col-span-1 flex items-center justify-center border-r border-b border-black dark:border-white p-2 md:p-4">
-        <p className="text-lg">About</p>
+      <div className="md:hidden col-span-1 flex items-center justify-center border-r-2 border-b-2 border-black dark:border-white p-2 md:p-4 hover:cursor-pointer">
+        <p className="text-lg md:text-xl">About</p>
       </div>
-      <div className="md:hidden col-span-1 flex items-center justify-center border-b border-r border-black dark:border-white p-2 md:p-4">
-        <p className="text-lg">Blog</p>
+      <div className="md:hidden col-span-1 flex items-center justify-center border-b-2 border-r-2 border-black dark:border-white p-2 md:p-4 hover:cursor-pointer">
+        <p className="text-lg md:text-xl">Blog</p>
       </div>
-      <div className="md:hidden col-span-1 flex items-center justify-center border-b p-2 border-black dark:border-white md:p-4">
-        <p className="text-lg">Contact</p>
+      <div className="md:hidden col-span-1 flex items-center justify-center border-b-2 p-2 border-black dark:border-white md:p-4 hover:cursor-pointer">
+        <p className="text-lg md:text-xl">Contact</p>
       </div>
     </header>
   );
