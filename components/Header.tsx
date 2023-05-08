@@ -1,4 +1,5 @@
 import { useTheme } from "next-themes";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FiSun, FiMoon } from "react-icons/fi";
 
@@ -9,12 +10,14 @@ export default function Header() {
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
-  let currentTheme = theme === "system" ? systemTheme : theme;
   return (
     <header className="grid grid-cols-3 md:grid-cols-6 grid-rows-2 md:grid-rows-1 sticky top-0 z-50 bg-highlight dark:bg-primary">
-      <div className="col-span-2 md:col-span-2 lg:col-span-1 row-span-1 flex items-center justify-center border-r-2 border-b-2 border-black dark:border-white p-2 md:p-4 hover:bg-primary dark:hover:bg-highlight hover:text-highlight dark:hover:text-primary">
+      <Link
+        href="/"
+        className="col-span-2 md:col-span-2 lg:col-span-1 row-span-1 flex items-center justify-center border-r-2 border-b-2 border-black dark:border-white p-2 md:p-4 hover:bg-primary dark:hover:bg-highlight hover:text-highlight dark:hover:text-primary"
+      >
         <p className="text-lg md:text-xl">Cody Lambert</p>
-      </div>
+      </Link>
       <div className="hidden md:block col-span-3 lg:col-span-4 row-span-1 flex items-center justify-center border-b-2 border-r-2 border-black dark:border-white p-2 md:p-4">
         <div className="flex flex-row justify-center">
           <p className="text-lg md:text-xl mx-6 hover:underline hover:cursor-pointer">
