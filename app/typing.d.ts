@@ -10,9 +10,11 @@ interface Project {
     }
   }
   url: string
+  github: string
   starDate: string
   endDate: string
   body: any
+  resources: any
 }
 
 interface Post {

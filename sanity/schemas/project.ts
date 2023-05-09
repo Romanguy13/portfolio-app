@@ -54,5 +54,10 @@ export default defineType({
       title: 'Body',
       type: 'blockContent',
     }),
+    defineField({
+      name: 'resources',
+      title: 'Resources',
+      type: 'blockContent',
+    }),
   ],
 })
