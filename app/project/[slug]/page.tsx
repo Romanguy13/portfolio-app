@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { getProject } from "../../../sanity/lib/projects";
+import { getProject, getProjects } from "../../../sanity/lib/projects";
 import { Project } from "../../typing";
 import { GrLinkNext } from "react-icons/gr";
 import PortableText from "react-portable-text";
@@ -34,10 +34,18 @@ const serializers = {
   ),
 };
 
+export async function generateStaticParams() {
+  const projects = await getProjects();
+
+  return projects.map((project: { slug: any }) => ({
+    slug: project.slug,
+  }));
+}
+
 export default async function ProjectPage({ params }: any) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-  const slug = params.slug;
+  const { slug } = params;
   const project: Project = await getProject(slug);
   return (
     <main>
