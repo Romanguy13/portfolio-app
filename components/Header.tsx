@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { FiSun, FiMoon } from "react-icons/fi";
 
 export default function Header() {
-  // const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
-
-  // if (!mounted) return null;
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
 
   return (
     <header className="grid grid-cols-3 md:grid-cols-6 grid-rows-2 md:grid-rows-1 sticky top-0 z-50 bg-highlight dark:bg-primary">
