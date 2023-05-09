@@ -28,7 +28,7 @@ export default async function Home() {
         </div>
         <div className="md:col-span-2 hidden md:block border-b-2 border-black dark:border-white bg-accent dark:bg-secondary"></div>
       </div>
-      <div className="flex-1 grid grid-cols-1 md:grid-cols-12">
+      <div className="md:flex-1 grid grid-cols-1 md:grid-cols-12">
         <div className="col-span-1 md:col-span-5 border-black dark:border-white border-b-2 md:border-b-0 md:border-r-2">
           <div className="flex flex-col p-4 p-8 md:p-12 lg:p-16 xl:p-24 border-black dark:border-white">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
