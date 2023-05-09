@@ -5,6 +5,7 @@ import PortableText from "react-portable-text";
 import Image from "next/image";
 import { GrGithub } from "react-icons/gr";
 import { urlForImage } from "../../../sanity/lib/image";
+import { Suspense } from "react";
 
 const serializers = {
   h1: (props: any) => (
