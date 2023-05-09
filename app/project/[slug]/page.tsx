@@ -1,5 +1,3 @@
-"use client";
-import Link from "next/link";
 import { getProject, getProjects } from "../../../sanity/lib/projects";
 import { Project } from "../../typing";
 import { GrLinkNext } from "react-icons/gr";
@@ -7,7 +5,6 @@ import PortableText from "react-portable-text";
 import Image from "next/image";
 import { GrGithub } from "react-icons/gr";
 import { urlForImage } from "../../../sanity/lib/image";
-import { use, useEffect, useState } from "react";
 
 const serializers = {
   h1: (props: any) => (
@@ -38,15 +35,18 @@ export async function generateStaticParams() {
   const projects = await getProjects();
 
   return projects.map((project: { slug: any }) => ({
-    slug: project.slug,
+    slug: project.slug.current,
   }));
 }
 
-export default async function ProjectPage({ params }: any) {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-  const { slug } = params;
-  const project: Project = await getProject(slug);
+interface ProjectPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const project: Project = await getProject(params.slug);
   return (
     <main>
       <div className="grow grid grid-cols-1 md:grid-cols-12">

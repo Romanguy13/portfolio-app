@@ -5,9 +5,12 @@ import { FiSun, FiMoon } from "react-icons/fi";
 
 export default function Header() {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme, systemTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+    setTheme("light");
+  }, [setTheme]);
   if (!mounted) return null;
 
   return (
@@ -27,7 +30,7 @@ export default function Header() {
             Blog
           </p>
           <p className="text-lg md:text-xl mx-6 hover:underline hover:cursor-pointer">
-            Contact
+            Resume
           </p>
         </div>
       </div>
@@ -48,7 +51,7 @@ export default function Header() {
         <p className="text-lg md:text-xl">Blog</p>
       </div>
       <div className="md:hidden col-span-1 flex items-center justify-center border-b-2 p-2 border-black dark:border-white md:p-4 hover:cursor-pointer">
-        <p className="text-lg md:text-xl">Contact</p>
+        <p className="text-lg md:text-xl">Resume</p>
       </div>
     </header>
   );

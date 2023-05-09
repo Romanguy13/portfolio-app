@@ -9,13 +9,4 @@ async function getProject(slug: string) {
   return res?.[0]
 }
 
-async function getPosts() {
-  return await client.fetch('*[_type == "post"]{slug, title}')
-}
-
-async function getPost(slug: string) {
-  const res = await client.fetch('*[_type == "post" && slug.current == $slug]', { slug })
-  return res?.[0]
-}
-
-export { getProjects, getProject, getPosts, getPost }
+export { getProjects, getProject }

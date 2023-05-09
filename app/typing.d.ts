@@ -37,7 +37,6 @@ interface Post {
 
 interface Category {
   title: string
-  description: string
 }
 
 export type { Project, Post, Category }
