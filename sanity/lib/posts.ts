@@ -9,7 +9,7 @@ async function getRecentPosts() {
 }
 
 async function getPost(slug: string) {
-  const res = await client.fetch('*[_type == "post" && slug.current == $slug]', { slug })
+  const res = await client.fetch('*[_type == "post" && slug.current == $slug] {title, body, mainImage, publishedAt, "categories": categories[]->title}', { slug })
   return res?.[0]
 }
 

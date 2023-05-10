@@ -5,7 +5,7 @@ import PortableText from "react-portable-text";
 import Image from "next/image";
 import { GrGithub } from "react-icons/gr";
 import { urlForImage } from "../../../sanity/lib/image";
-import Arrow from "../../../components/Arrow";
+// import serializers from "../../../lib/serializers";
 
 const serializers = {
   h1: (props: any) => (
@@ -117,12 +117,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </div>
       </div>
-      {/* <a
-          href={project.github}
-          className="flex max-w-3xl mx-auto px-4 md:px-8 lg:px-10 xl:px-12"
-        >
-          <GrGithub className="text-4xl md:text-5xl lg:text-6xl font-bold col-span-1 flex justify-center items-center dark:text-white" />
-        </a> */}
     </main>
   );
 }
