@@ -1,11 +1,11 @@
 import { getProject, getProjects } from "../../../sanity/lib/projects";
 import { Project } from "../../typing";
-import { GrLinkNext } from "react-icons/gr";
+import { BsArrowRight } from "react-icons/bs";
 import PortableText from "react-portable-text";
 import Image from "next/image";
 import { GrGithub } from "react-icons/gr";
 import { urlForImage } from "../../../sanity/lib/image";
-import { Suspense } from "react";
+import Arrow from "../../../components/Arrow";
 
 const serializers = {
   h1: (props: any) => (
@@ -65,23 +65,22 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
             Live Demo
           </h1>
-          <GrLinkNext className="text-4xl md:text-5xl lg:text-6xl font-bold group-hover:translate-x-4 transition-all duration-200 ease-in-out dark:text-white" />
+          <BsArrowRight className="text-4xl md:text-5xl lg:text-6xl font-bold group-hover:translate-x-4 transition-all duration-200 ease-in-out" />
         </a>
       </div>
-      <a
-        href={project.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="md:hidden flex bg-accent dark:bg-secondary border-b-2 border-black dark:border-white justify-between items-center p-4 group hover:cursor-pointer"
-      >
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold col-span-1 flex justify-center items-center">
-          Live Demo
-        </h1>
-        <GrLinkNext
-          color="white"
-          className="text-4xl md:text-5xl lg:text-4xl font-bold col-span-1 flex justify-center items-center dark:text-white group-hover:translate-x-4 transition-all duration-500 ease-in-out"
-        />
-      </a>
+      {project.url && (
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="md:hidden flex bg-accent dark:bg-secondary border-b-2 border-black dark:border-white justify-between items-center p-4 group hover:cursor-pointer"
+        >
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold col-span-1 flex justify-center items-center">
+            Live Demo
+          </h1>
+          <BsArrowRight className="text-4xl md:text-5xl lg:text-6xl font-bold col-span-1 flex justify-center items-center group-hover:translate-x-2 transition-all duration-200 ease-in-out" />
+        </a>
+      )}
       <Image
         src={urlForImage(project.mainImage).url() || ""}
         alt={project.title}

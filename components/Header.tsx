@@ -37,7 +37,7 @@ export default function Header() {
         {theme === "dark" ? (
           <FiSun className="text-2xl text-highlight" />
         ) : (
-          <FiMoon className="text-2xl text-secondary" />
+          <FiMoon className="text-2xl text-black" />
         )}
       </div>
       <div className="md:hidden col-span-1 flex items-center justify-center border-r-2 border-b-2 border-black dark:border-white p-2 md:p-4 hover:cursor-pointer">
